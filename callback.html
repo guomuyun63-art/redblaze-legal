@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TikTok Callback</title>
+</head>
+<body style="font-family: Arial, sans-serif; max-width: 900px; margin: 40px auto; line-height: 1.7; padding: 0 20px;">
+  <h1>TikTok Authorization Callback</h1>
+  <p>This page is used as the TikTok OAuth redirect URI for this web application.</p>
+
+  <div id="result" style="margin-top: 20px; padding: 16px; border: 1px solid #ddd; border-radius: 8px;">
+    Processing callback parameters...
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const code = params.get("code");
+    const error = params.get("error");
+    const state = params.get("state");
+
+    const result = document.getElementById("result");
+
+    if (error) {
+      result.innerHTML = `
+        <strong>Authorization failed.</strong><br>
+        error: ${error}<br>
+        state: ${state || ""}
+      `;
+    } else if (code) {
+      result.innerHTML = `
+        <strong>Authorization received successfully.</strong><br>
+        code: ${code}<br>
+        state: ${state || ""}
+      `;
+    } else {
+      result.innerHTML = `
+        <strong>Callback page loaded successfully.</strong><br>
+        No authorization parameters were found.
+      `;
+    }
+  </script>
+
+  <p style="margin-top: 24px;">
+    <a href="/">Back to Home</a>
+  </p>
+</body>
+</html>
