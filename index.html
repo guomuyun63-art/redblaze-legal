@@ -1,11 +1,658 @@
 <!DOCTYPE html>
-<html>
-<head><title>RedBlaze Legal</title></head>
-<body style="padding:40px;font-family:sans-serif;line-height:1.6">
-  <h1>RedBlaze Digital Auto Terms & Privacy</h1>
-  <h2>Terms of Service</h2>
-  <p>Last updated: March 2026<br>新加坡TikTok Shop卖家RedBlaze (user8508315235400) 用于自动发布手机数码视频（无线耳机、充电器、充电宝、MagSafe支架）。仅商业推广，无垃圾信息。</p>
-  <h2>Privacy Policy</h2>
-  <p>我们尊重隐私。此App仅访问TikTok Shop API发布视频，不收集任何用户数据。</p>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+  <title>RedBlaze Digital Auto</title>
+  <style>
+    :root {
+      --bg: #0f1115;
+      --panel: #171a21;
+      --panel-2: #1e2430;
+      --text: #f5f7fb;
+      --muted: #aab3c2;
+      --line: #2b3342;
+      --brand: #ff3b30;
+      --brand-2: #ff7b00;
+      --ok: #17c964;
+      --warn: #f5a524;
+      --danger: #f31260;
+      --white: #ffffff;
+      --shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
+      --radius: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(180deg, #0b0d12 0%, #11141b 100%);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    a {
+      color: #8dc6ff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .wrap {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 40px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .card {
+      background: rgba(23, 26, 33, 0.96);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-left {
+      padding: 28px;
+    }
+
+    .brand-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .logo-box {
+      width: 72px;
+      height: 72px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, #ff3127 0%, #cb150c 100%);
+      border: 1px solid rgba(255,255,255,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 34px;
+      box-shadow: inset 0 0 0 2px rgba(255,255,255,0.06);
+      flex-shrink: 0;
+    }
+
+    .brand-meta h1 {
+      margin: 0 0 6px;
+      font-size: 34px;
+      line-height: 1.15;
+      letter-spacing: 0.2px;
+    }
+
+    .brand-meta p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 18px 0 24px;
+    }
+
+    .badge {
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--text);
+      background: #12161d;
+      font-size: 13px;
+    }
+
+    .badge.ok {
+      border-color: rgba(23, 201, 100, 0.28);
+      color: #8df0bc;
+      background: rgba(23, 201, 100, 0.08);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 6px;
+    }
+
+    button,
+    .btn-link {
+      appearance: none;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 15px;
+      transition: 0.2s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(90deg, var(--brand) 0%, var(--brand-2) 100%);
+      color: var(--white);
+      padding: 14px 18px;
+      min-width: 220px;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      opacity: 0.96;
+    }
+
+    .btn-secondary {
+      background: #202633;
+      color: var(--text);
+      padding: 14px 18px;
+      min-width: 220px;
+      border: 1px solid #2d3647;
+    }
+
+    .btn-secondary:hover {
+      transform: translateY(-1px);
+      background: #252d3b;
+    }
+
+    .hero-right {
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .status-title {
+      margin: 0 0 4px;
+      font-size: 20px;
+    }
+
+    .status-sub {
+      margin: 0 0 10px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .status-box {
+      background: #0f131a;
+      border: 1px solid #2a3140;
+      border-radius: 14px;
+      padding: 14px 16px;
+    }
+
+    .status-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 10px 0;
+      border-bottom: 1px dashed rgba(255,255,255,0.08);
+      font-size: 14px;
+    }
+
+    .status-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .status-label {
+      color: var(--muted);
+    }
+
+    .status-value {
+      text-align: right;
+      word-break: break-word;
+    }
+
+    .sections {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      margin-top: 24px;
+    }
+
+    .section-card {
+      padding: 24px;
+    }
+
+    .section-card h2 {
+      margin: 0 0 8px;
+      font-size: 24px;
+    }
+
+    .section-card p {
+      margin: 0 0 18px;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    .field {
+      margin-bottom: 16px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 14px;
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .field input[type="file"] {
+      width: 100%;
+      background: #0f131a;
+      color: var(--muted);
+      border: 1px solid #2b3342;
+      border-radius: 12px;
+      padding: 12px;
+    }
+
+    .file-hint {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .result-box {
+      margin-top: 18px;
+      background: #0f131a;
+      border: 1px solid #2b3342;
+      border-radius: 14px;
+      padding: 16px;
+      min-height: 128px;
+      white-space: pre-wrap;
+      line-height: 1.65;
+      color: #dce4f2;
+      font-size: 14px;
+    }
+
+    .mini-steps {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 14px;
+    }
+
+    .footer {
+      margin-top: 24px;
+      padding: 18px 22px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .footer-left {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 14px;
+    }
+
+    .inline-note {
+      margin-top: 12px;
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .warn {
+      color: #ffd479;
+    }
+
+    .ok {
+      color: #8df0bc;
+    }
+
+    .danger {
+      color: #ff8fb2;
+    }
+
+    @media (max-width: 900px) {
+      .hero,
+      .sections {
+        grid-template-columns: 1fr;
+      }
+
+      .brand-meta h1 {
+        font-size: 28px;
+      }
+
+      .btn-primary,
+      .btn-secondary {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <div class="card hero-left">
+        <div class="brand-row">
+          <div class="logo-box">🔥</div>
+          <div class="brand-meta">
+            <h1>RedBlaze Digital Auto</h1>
+            <p>
+              Web tool for merchants to sign in with TikTok and upload product videos
+              as drafts for review and posting.
+            </p>
+          </div>
+        </div>
+
+        <div class="badges">
+          <span class="badge ok">Web</span>
+          <span class="badge ok">Login Kit</span>
+          <span class="badge ok">Content Posting API</span>
+          <span class="badge">Scope: user.info.basic</span>
+          <span class="badge">Scope: video.upload</span>
+        </div>
+
+        <div class="hero-actions">
+          <button id="loginBtn" class="btn-primary" type="button">
+            Sign in with TikTok
+          </button>
+          <a class="btn-link btn-secondary" href="/callback.html">
+            Open Callback Page
+          </a>
+        </div>
+
+        <div class="inline-note">
+          This page is the official website entry for RedBlaze Digital Auto.
+          Users sign in with TikTok first, then choose a local video file and upload it to TikTok as a draft.
+        </div>
+      </div>
+
+      <div class="card hero-right">
+        <h2 class="status-title">Current Status</h2>
+        <p class="status-sub">
+          This panel is used for quick review during TikTok Developer app review demos.
+        </p>
+
+        <div class="status-box">
+          <div class="status-item">
+            <div class="status-label">Website URL</div>
+            <div class="status-value" id="siteUrlValue">
+              https://prismatic-pithivier-1bfb41.netlify.app/
+            </div>
+          </div>
+          <div class="status-item">
+            <div class="status-label">Redirect URI</div>
+            <div class="status-value" id="redirectUriValue">
+              https://prismatic-pithivier-1bfb41.netlify.app/callback.html
+            </div>
+          </div>
+          <div class="status-item">
+            <div class="status-label">Login Status</div>
+            <div class="status-value" id="loginStatusText">Not connected</div>
+          </div>
+          <div class="status-item">
+            <div class="status-label">Selected File</div>
+            <div class="status-value" id="fileStatusText">No file selected</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sections">
+      <div class="card section-card">
+        <h2>Step 1 · Connect TikTok</h2>
+        <p>
+          Click the button below to start TikTok Login Kit authorization.
+          After authorization, TikTok will redirect to your registered callback page.
+        </p>
+
+        <button id="loginBtn2" class="btn-primary" type="button">
+          Sign in with TikTok
+        </button>
+
+        <div class="result-box" id="authBox">
+Waiting for TikTok authorization...
+
+- If you have not configured the client key yet, update the CLIENT_KEY value in this file.
+- If you complete authorization successfully, callback.html should receive the returned code.
+        </div>
+      </div>
+
+      <div class="card section-card">
+        <h2>Step 2 · Upload Video Draft</h2>
+        <p>
+          Select a local MP4 or MOV file, then send it to your server-side upload endpoint
+          for TikTok draft upload.
+        </p>
+
+        <div class="field">
+          <label for="videoFile">Choose video file</label>
+          <input
+            id="videoFile"
+            type="file"
+            accept="video/mp4,video/quicktime,video/*"
+          />
+          <div class="file-hint">
+            Suggested for review demo: use a short test video file such as <strong>test-video.mp4</strong>.
+          </div>
+        </div>
+
+        <button id="uploadBtn" class="btn-secondary" type="button">
+          Upload to TikTok Draft
+        </button>
+
+        <div class="result-box" id="uploadBox">
+Upload not started.
+
+This button expects a server endpoint:
+POST /.netlify/functions/tiktok-upload-draft
+
+If you have not created that function yet, the page will show a clear configuration warning.
+        </div>
+      </div>
+    </section>
+
+    <section class="card section-card" style="margin-top: 24px;">
+      <h2>Review Demo Checklist</h2>
+      <p>
+        Use this page during your TikTok Developer review recording.
+      </p>
+      <ol class="mini-steps">
+        <li>Open this homepage and show the domain in the browser address bar.</li>
+        <li>Show the Privacy Policy and Terms of Service links at the bottom of this page.</li>
+        <li>Click <strong>Sign in with TikTok</strong> and complete authorization.</li>
+        <li>Return to the website or callback page.</li>
+        <li>Select a local test video file.</li>
+        <li>Click <strong>Upload to TikTok Draft</strong>.</li>
+        <li>Show the final success message or upload response.</li>
+      </ol>
+    </section>
+
+    <footer class="card footer">
+      <div class="footer-left">
+        RedBlaze Digital Auto · Singapore TikTok Shop creator workflow entry page
+      </div>
+      <div class="footer-links">
+        <a href="/privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+        <a href="/terms.html" target="_blank" rel="noopener noreferrer">Terms of Service</a>
+        <a href="/callback.html" target="_blank" rel="noopener noreferrer">Callback Page</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const CONFIG = {
+      CLIENT_KEY: "awoatwmxx6wa1c58",
+      REDIRECT_URI: "https://prismatic-pithivier-1bfb41.netlify.app/callback.html",
+      AUTH_ENDPOINT: "https://www.tiktok.com/v2/auth/authorize/",
+      SCOPES: ["user.info.basic", "video.upload"],
+      UPLOAD_ENDPOINT: "/.netlify/functions/tiktok-upload-draft"
+    };
+
+    const stateKey = "rb_tiktok_state";
+    const authCodeKey = "rb_tiktok_auth_code";
+    const authScopesKey = "rb_tiktok_scopes";
+
+    const loginBtn = document.getElementById("loginBtn");
+    const loginBtn2 = document.getElementById("loginBtn2");
+    const uploadBtn = document.getElementById("uploadBtn");
+    const videoFile = document.getElementById("videoFile");
+    const authBox = document.getElementById("authBox");
+    const uploadBox = document.getElementById("uploadBox");
+    const loginStatusText = document.getElementById("loginStatusText");
+    const fileStatusText = document.getElementById("fileStatusText");
+
+    function randomState(length = 32) {
+      const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+      let result = "";
+      const array = new Uint8Array(length);
+      window.crypto.getRandomValues(array);
+      for (let i = 0; i < array.length; i++) {
+        result += chars[array[i] % chars.length];
+      }
+      return result;
+    }
+
+    function setAuthStatus(text, cssClass = "") {
+      authBox.classList.remove("ok", "warn", "danger");
+      if (cssClass) authBox.classList.add(cssClass);
+      authBox.textContent = text;
+    }
+
+    function setUploadStatus(text, cssClass = "") {
+      uploadBox.classList.remove("ok", "warn", "danger");
+      if (cssClass) uploadBox.classList.add(cssClass);
+      uploadBox.textContent = text;
+    }
+
+    function updateLoginPanel() {
+      const savedCode = sessionStorage.getItem(authCodeKey);
+      const savedScopes = sessionStorage.getItem(authScopesKey);
+
+      if (savedCode) {
+        loginStatusText.textContent = "Authorized";
+        setAuthStatus(
+          "TikTok authorization code detected in sessionStorage.\n\n" +
+          "Scopes: " + (savedScopes || "unknown") + "\n" +
+          "Status: ready for next server-side token exchange step.",
+          "ok"
+        );
+      } else {
+        loginStatusText.textContent = "Not connected";
+      }
+    }
+
+    function buildAuthorizeUrl() {
+      const state = randomState();
+      sessionStorage.setItem(stateKey, state);
+
+      const params = new URLSearchParams();
+      params.set("client_key", CONFIG.CLIENT_KEY);
+      params.set("response_type", "code");
+      params.set("scope", CONFIG.SCOPES.join(","));
+      params.set("redirect_uri", CONFIG.REDIRECT_URI);
+      params.set("state", state);
+      params.set("disable_auto_auth", "1");
+
+      return CONFIG.AUTH_ENDPOINT + "?" + params.toString();
+    }
+
+    function startTikTokLogin() {
+      if (!CONFIG.CLIENT_KEY || CONFIG.CLIENT_KEY === "PASTE_YOUR_CLIENT_KEY_HERE") {
+        setAuthStatus(
+          "CLIENT_KEY is not configured yet.\n\n" +
+          "Open index.html and replace PASTE_YOUR_CLIENT_KEY_HERE with your real TikTok Client Key.",
+          "danger"
+        );
+        return;
+      }
+
+      const authUrl = buildAuthorizeUrl();
+      window.location.href = authUrl;
+    }
+
+    async function uploadDraft() {
+      const file = videoFile.files && videoFile.files[0];
+      const savedCode = sessionStorage.getItem(authCodeKey);
+
+      if (!file) {
+        setUploadStatus("Please choose a video file first.", "danger");
+        return;
+      }
+
+      if (!savedCode) {
+        setUploadStatus(
+          "TikTok authorization code not found.\n\n" +
+          "Complete Login Kit authorization first, then return here to upload.",
+          "danger"
+        );
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("authorization_code", savedCode);
+
+      setUploadStatus("Uploading...\n\nSending file to " + CONFIG.UPLOAD_ENDPOINT, "warn");
+
+      try {
+        const response = await fetch(CONFIG.UPLOAD_ENDPOINT, {
+          method: "POST",
+          body: formData
+        });
+
+        const raw = await response.text();
+
+        if (!response.ok) {
+          throw new Error(raw || ("HTTP " + response.status));
+        }
+
+        setUploadStatus(
+          "Upload request completed.\n\nServer response:\n" + raw,
+          "ok"
+        );
+      } catch (error) {
+        setUploadStatus(
+          "Upload endpoint is not ready or returned an error.\n\n" +
+          "Current endpoint: " + CONFIG.UPLOAD_ENDPOINT + "\n\n" +
+          "Error:\n" + error.message + "\n\n" +
+          "This means the homepage is ready, but the server-side draft upload function still needs to be connected.",
+          "danger"
+        );
+      }
+    }
+
+    videoFile.addEventListener("change", () => {
+      const file = videoFile.files && videoFile.files[0];
+      fileStatusText.textContent = file ? file.name : "No file selected";
+    });
+
+    loginBtn.addEventListener("click", startTikTokLogin);
+    loginBtn2.addEventListener("click", startTikTokLogin);
+    uploadBtn.addEventListener("click", uploadDraft);
+
+    updateLoginPanel();
+  </script>
 </body>
 </html>
