@@ -592,10 +592,6 @@ If you have not created that function yet, the page will show a clear configurat
       window.location.href = authUrl;
     }
 
-      const authUrl = buildAuthorizeUrl();
-      window.location.href = authUrl;
-    }
-
     async function uploadDraft() {
       const file = videoFile.files && videoFile.files[0];
       const savedCode = sessionStorage.getItem(authCodeKey);
