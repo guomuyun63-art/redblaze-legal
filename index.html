@@ -579,14 +579,18 @@ If you have not created that function yet, the page will show a clear configurat
     }
 
     function startTikTokLogin() {
-      if (!CONFIG.CLIENT_KEY || CONFIG.CLIENT_KEY === "awoatwmxx6wa1c58") {
+      if (!CONFIG.CLIENT_KEY || !CONFIG.CLIENT_KEY.trim()) {
         setAuthStatus(
           "CLIENT_KEY is not configured yet.\n\n" +
-          "Open index.html and replace awoatwmxx6wa1c58 with your real TikTok Client Key.",
+          "Open index.html and fill in your real TikTok Client Key.",
           "danger"
         );
         return;
       }
+
+      const authUrl = buildAuthorizeUrl();
+      window.location.href = authUrl;
+    }
 
       const authUrl = buildAuthorizeUrl();
       window.location.href = authUrl;
