@@ -19,7 +19,9 @@
       --btn-hover: #ff6a4a;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
     body {
       margin: 0;
@@ -51,7 +53,7 @@
       background: rgba(16, 26, 43, 0.96);
       border: 1px solid var(--line);
       border-radius: 24px;
-      box-shadow: 0 10px 28px rgba(0,0,0,0.28);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
       padding: 28px;
     }
 
@@ -140,7 +142,9 @@
       min-width: 210px;
     }
 
-    .btn:hover { background: var(--btn-hover); }
+    .btn:hover {
+      background: var(--btn-hover);
+    }
 
     .btn-secondary {
       background: #162238;
@@ -244,10 +248,6 @@
       color: #94f0c5;
     }
 
-    .warn {
-      color: #ffd9a0;
-    }
-
     @media (max-width: 960px) {
       .grid-top {
         grid-template-columns: 1fr;
@@ -288,7 +288,7 @@
 
             <div class="hero-actions">
               <a class="btn" id="loginBtn" href="#">Sign in with TikTok</a>
-              <a class="btn btn-secondary" href="/callback/">Open Callback Page</a>
+              <a class="btn btn-secondary" id="callbackBtn" href="#">Open Callback Page</a>
             </div>
 
             <p class="small-note">
@@ -297,9 +297,9 @@
             </p>
 
             <div class="links">
-              <a href="/terms.html" target="_blank">Terms of Service</a>
-              <a href="/privacy.html" target="_blank">Privacy Policy</a>
-              <a href="/callback/" target="_blank">Callback Page</a>
+              <a id="termsLink" href="#" target="_blank">Terms of Service</a>
+              <a id="privacyLink" href="#" target="_blank">Privacy Policy</a>
+              <a id="callbackLink" href="#" target="_blank">Callback Page</a>
             </div>
           </div>
         </div>
@@ -346,7 +346,7 @@
           <p>2. Review Terms of Service and Privacy Policy</p>
           <p>3. Click “Sign in with TikTok”</p>
           <p>4. Complete TikTok authentication and consent</p>
-          <p>5. Return to <span class="ok">/callback/</span> page</p>
+          <p>5. Return to <span class="ok">/redblaze-legal/callback/</span></p>
           <p>6. Display received authorization result for review demonstration</p>
         </div>
       </section>
@@ -354,8 +354,23 @@
   </div>
 
   <script>
-    const CLIENT_KEY = "sbawjnvws0ygbhi2a9";
-    const REDIRECT_URI = "https://prismatic-pithivier-1bfb41.netlify.app/callback/";
+    /*
+      只要后面 Sandbox / Production 的 Client key 变了，
+      你只改下面这一行即可。
+    */
+    const CLIENT_KEY = "awpjfn7sfnqzexf2";
+
+    /*
+      GitHub Pages 项目站固定前缀：
+      https://guomuyun63-art.github.io/redblaze-legal/
+    */
+    const SITE_ORIGIN = "https://guomuyun63-art.github.io";
+    const BASE_PATH = "/redblaze-legal/";
+    const WEBSITE_URL = SITE_ORIGIN + BASE_PATH;
+    const REDIRECT_URI = SITE_ORIGIN + BASE_PATH + "callback/";
+    const TERMS_URL = SITE_ORIGIN + BASE_PATH + "terms.html";
+    const PRIVACY_URL = SITE_ORIGIN + BASE_PATH + "privacy.html";
+    const CALLBACK_URL = SITE_ORIGIN + BASE_PATH + "callback/";
     const SCOPES = "user.info.basic,user.info.profile";
     const STATE = "test123";
 
@@ -370,7 +385,12 @@
     document.getElementById("loginBtn").href = AUTH_URL;
     document.getElementById("loginBtn2").href = AUTH_URL;
 
-    document.getElementById("websiteUrl").textContent = "https://prismatic-pithivier-1bfb41.netlify.app/";
+    document.getElementById("callbackBtn").href = CALLBACK_URL;
+    document.getElementById("termsLink").href = TERMS_URL;
+    document.getElementById("privacyLink").href = PRIVACY_URL;
+    document.getElementById("callbackLink").href = CALLBACK_URL;
+
+    document.getElementById("websiteUrl").textContent = WEBSITE_URL;
     document.getElementById("redirectUri").textContent = REDIRECT_URI;
     document.getElementById("scopeValue").textContent = SCOPES;
 
