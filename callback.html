@@ -2,375 +2,219 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  />
-  <title>RedBlaze Digital Auto - Callback</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TikTok Callback</title>
   <style>
     :root {
-      --bg: #0f1115;
-      --panel: #171a21;
-      --panel-2: #1e2430;
-      --text: #f5f7fb;
-      --muted: #aab3c2;
-      --line: #2b3342;
-      --brand: #ff3b30;
-      --brand-2: #ff7b00;
-      --ok: #17c964;
-      --warn: #f5a524;
-      --danger: #f31260;
-      --white: #ffffff;
-      --shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
-      --radius: 18px;
+      --bg: #08111f;
+      --card: #101a2b;
+      --line: #25324a;
+      --text: #eef4ff;
+      --muted: #b7c3d9;
+      --ok: #18c37e;
+      --warn: #ffd08a;
+      --err: #ff8d8d;
+      --btn: #162238;
     }
 
     * {
       box-sizing: border-box;
     }
 
-    html, body {
+    body {
       margin: 0;
-      padding: 0;
-      background: linear-gradient(180deg, #0b0d12 0%, #11141b 100%);
-      color: var(--text);
       font-family: Arial, Helvetica, sans-serif;
-    }
-
-    a {
-      color: #8dc6ff;
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
+      background: linear-gradient(180deg, #07101d 0%, #0a1322 100%);
+      color: var(--text);
     }
 
     .wrap {
-      width: min(920px, calc(100% - 32px));
+      max-width: 980px;
       margin: 0 auto;
-      padding: 36px 0 48px;
+      padding: 32px 20px 48px;
     }
 
     .card {
-      background: rgba(23, 26, 33, 0.96);
+      background: rgba(16, 26, 43, 0.96);
       border: 1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
+      border-radius: 24px;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.28);
       padding: 28px;
     }
 
-    .brand-row {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin-bottom: 20px;
-    }
-
-    .logo-box {
-      width: 72px;
-      height: 72px;
-      border-radius: 18px;
-      background: linear-gradient(180deg, #ff3127 0%, #cb150c 100%);
-      border: 1px solid rgba(255,255,255,0.12);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 34px;
-      box-shadow: inset 0 0 0 2px rgba(255,255,255,0.06);
-      flex-shrink: 0;
-    }
-
     h1 {
-      margin: 0 0 6px;
-      font-size: 34px;
-      line-height: 1.15;
+      margin: 0 0 12px;
+      font-size: 32px;
     }
 
-    .sub {
-      margin: 0;
+    p {
+      margin: 0 0 12px;
       color: var(--muted);
-      font-size: 15px;
-      line-height: 1.6;
+      font-size: 16px;
+      line-height: 1.8;
     }
 
-    .status-banner {
-      margin: 18px 0 20px;
-      padding: 14px 16px;
-      border-radius: 14px;
-      font-weight: 700;
-      line-height: 1.6;
-    }
-
-    .status-banner.ok {
-      background: rgba(23, 201, 100, 0.1);
-      border: 1px solid rgba(23, 201, 100, 0.28);
-      color: #8df0bc;
-    }
-
-    .status-banner.warn {
-      background: rgba(245, 165, 36, 0.1);
-      border: 1px solid rgba(245, 165, 36, 0.28);
-      color: #ffd479;
-    }
-
-    .status-banner.danger {
-      background: rgba(243, 18, 96, 0.1);
-      border: 1px solid rgba(243, 18, 96, 0.28);
-      color: #ff9fc0;
-    }
-
-    .detail-box {
-      margin-top: 18px;
-      background: #0f131a;
-      border: 1px solid #2a3140;
-      border-radius: 14px;
-      padding: 16px;
+    .panel {
+      margin-top: 22px;
+      border: 1px solid #28405b;
+      border-radius: 18px;
+      background: #0c1525;
+      padding: 18px;
     }
 
     .row {
-      display: grid;
-      grid-template-columns: 180px 1fr;
-      gap: 14px;
-      padding: 10px 0;
-      border-bottom: 1px dashed rgba(255,255,255,0.08);
-      font-size: 14px;
-      line-height: 1.6;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(53, 71, 97, 0.55);
     }
 
     .row:last-child {
       border-bottom: none;
-      padding-bottom: 0;
     }
 
-    .label {
-      color: var(--muted);
-      font-weight: 700;
+    .key {
+      color: #cdd8ec;
+      font-size: 14px;
+      margin-bottom: 6px;
     }
 
     .value {
-      word-break: break-word;
+      color: #ffffff;
+      font-size: 15px;
+      word-break: break-all;
+      line-height: 1.7;
+    }
+
+    .status {
+      margin-top: 18px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      font-weight: 700;
+      font-size: 16px;
+    }
+
+    .status.ok {
+      background: rgba(24, 195, 126, 0.12);
+      border: 1px solid rgba(24, 195, 126, 0.35);
+      color: #9ff3cd;
+    }
+
+    .status.warn {
+      background: rgba(255, 208, 138, 0.12);
+      border: 1px solid rgba(255, 208, 138, 0.35);
+      color: #ffe4b6;
+    }
+
+    .status.err {
+      background: rgba(255, 141, 141, 0.12);
+      border: 1px solid rgba(255, 141, 141, 0.35);
+      color: #ffc0c0;
     }
 
     .actions {
       display: flex;
-      flex-wrap: wrap;
       gap: 12px;
+      flex-wrap: wrap;
       margin-top: 24px;
     }
 
-    button,
-    .btn-link {
+    .btn {
       appearance: none;
-      border: none;
-      border-radius: 12px;
-      cursor: pointer;
+      border: 1px solid #31455f;
+      border-radius: 14px;
+      background: var(--btn);
+      color: #fff;
+      font-size: 16px;
       font-weight: 700;
-      font-size: 15px;
-      transition: 0.2s ease;
+      padding: 13px 20px;
       text-decoration: none;
       display: inline-flex;
       align-items: center;
       justify-content: center;
     }
 
-    .btn-primary {
-      background: linear-gradient(90deg, var(--brand) 0%, var(--brand-2) 100%);
-      color: var(--white);
-      padding: 14px 18px;
-      min-width: 220px;
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      opacity: 0.96;
-      text-decoration: none;
-    }
-
-    .btn-secondary {
-      background: #202633;
-      color: var(--text);
-      padding: 14px 18px;
-      min-width: 220px;
-      border: 1px solid #2d3647;
-    }
-
-    .btn-secondary:hover {
-      transform: translateY(-1px);
-      background: #252d3b;
-      text-decoration: none;
-    }
-
-    .notes {
-      margin-top: 24px;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.8;
-    }
-
-    code {
-      background: rgba(255,255,255,0.06);
-      padding: 2px 6px;
-      border-radius: 8px;
-    }
-
-    @media (max-width: 720px) {
-      h1 {
-        font-size: 28px;
-      }
-
-      .row {
-        grid-template-columns: 1fr;
-        gap: 6px;
-      }
-
-      .btn-primary,
-      .btn-secondary {
-        width: 100%;
-      }
+    .btn:hover {
+      background: #1d2d48;
     }
   </style>
 </head>
 <body>
   <div class="wrap">
-    <section class="card">
-      <div class="brand-row">
-        <div class="logo-box">🔥</div>
-        <div>
-          <h1>TikTok Authorization Callback</h1>
-          <p class="sub">
-            This page receives the TikTok authorization result and stores it locally for the RedBlaze homepage.
-          </p>
-        </div>
-      </div>
+    <div class="card">
+      <h1>TikTok Authorization Callback</h1>
+      <p>
+        This page displays the authorization result returned by TikTok Login Kit.
+        For secure production use, the returned authorization code should be exchanged on the server side.
+      </p>
 
-      <div id="statusBanner" class="status-banner warn">
-        Processing TikTok callback parameters...
-      </div>
+      <div id="statusBox" class="status warn">Waiting for authorization response...</div>
 
-      <div class="detail-box">
+      <div class="panel">
         <div class="row">
-          <div class="label">Callback URL</div>
+          <div class="key">Current callback URL</div>
           <div class="value" id="currentUrl"></div>
         </div>
         <div class="row">
-          <div class="label">Authorization Code</div>
-          <div class="value" id="codeValue">-</div>
+          <div class="key">Authorization code</div>
+          <div class="value" id="codeValue">—</div>
         </div>
         <div class="row">
-          <div class="label">State</div>
-          <div class="value" id="stateValue">-</div>
+          <div class="key">Scopes</div>
+          <div class="value" id="scopeValue">—</div>
         </div>
         <div class="row">
-          <div class="label">Expected State</div>
-          <div class="value" id="expectedStateValue">-</div>
+          <div class="key">State</div>
+          <div class="value" id="stateValue">—</div>
         </div>
         <div class="row">
-          <div class="label">Error</div>
-          <div class="value" id="errorValue">-</div>
-        </div>
-        <div class="row">
-          <div class="label">Stored Result</div>
-          <div class="value" id="storedStatusValue">Pending</div>
+          <div class="key">Error</div>
+          <div class="value" id="errorValue">—</div>
         </div>
       </div>
 
       <div class="actions">
-        <a class="btn-link btn-primary" href="/index.html">Return to Homepage</a>
-        <button id="clearBtn" class="btn-secondary" type="button">Clear Local Auth Data</button>
+        <a class="btn" id="homeBtn" href="#">Back to homepage</a>
+        <a class="btn" id="termsBtn" href="#" target="_blank">Terms</a>
+        <a class="btn" id="privacyBtn" href="#" target="_blank">Privacy</a>
       </div>
-
-      <div class="notes">
-        <div>Use this page in your review demo after completing TikTok authorization.</div>
-        <div>
-          After success, go back to <code>/index.html</code>. The homepage status should change from
-          <code>Not connected</code> to <code>Authorized</code>.
-        </div>
-      </div>
-    </section>
+    </div>
   </div>
 
   <script>
-    const stateKey = "rb_tiktok_state";
-    const authCodeKey = "rb_tiktok_auth_code";
-    const authScopesKey = "rb_tiktok_scopes";
+    const SITE_ORIGIN = "https://guomuyun63-art.github.io";
+    const BASE_PATH = "/redblaze-legal/";
+    const HOME_URL = SITE_ORIGIN + BASE_PATH;
+    const TERMS_URL = SITE_ORIGIN + BASE_PATH + "terms.html";
+    const PRIVACY_URL = SITE_ORIGIN + BASE_PATH + "privacy.html";
 
-    const statusBanner = document.getElementById("statusBanner");
-    const currentUrl = document.getElementById("currentUrl");
-    const codeValue = document.getElementById("codeValue");
-    const stateValue = document.getElementById("stateValue");
-    const expectedStateValue = document.getElementById("expectedStateValue");
-    const errorValue = document.getElementById("errorValue");
-    const storedStatusValue = document.getElementById("storedStatusValue");
-    const clearBtn = document.getElementById("clearBtn");
+    document.getElementById("homeBtn").href = HOME_URL;
+    document.getElementById("termsBtn").href = TERMS_URL;
+    document.getElementById("privacyBtn").href = PRIVACY_URL;
 
-    function setBanner(type, text) {
-      statusBanner.className = "status-banner " + type;
-      statusBanner.textContent = text;
+    const params = new URLSearchParams(window.location.search);
+    const code = params.get("code");
+    const scopes = params.get("scopes") || params.get("scope");
+    const state = params.get("state");
+    const error = params.get("error") || params.get("error_description");
+
+    document.getElementById("currentUrl").textContent = window.location.href;
+    document.getElementById("codeValue").textContent = code || "—";
+    document.getElementById("scopeValue").textContent = scopes || "—";
+    document.getElementById("stateValue").textContent = state || "—";
+    document.getElementById("errorValue").textContent = error || "—";
+
+    const statusBox = document.getElementById("statusBox");
+
+    if (code) {
+      statusBox.className = "status ok";
+      statusBox.textContent = "Authorization code received successfully.";
+      localStorage.setItem("tt_auth_code", code);
+    } else if (error) {
+      statusBox.className = "status err";
+      statusBox.textContent = "Authorization returned an error.";
+    } else {
+      statusBox.className = "status warn";
+      statusBox.textContent = "No authorization response detected yet.";
     }
-
-    function getParam(name) {
-      const params = new URLSearchParams(window.location.search);
-      return params.get(name);
-    }
-
-    function clearLocalAuthData() {
-      sessionStorage.removeItem(stateKey);
-      sessionStorage.removeItem(authCodeKey);
-      sessionStorage.removeItem(authScopesKey);
-      storedStatusValue.textContent = "Cleared";
-      setBanner("warn", "Local authorization data has been cleared.");
-    }
-
-    function processCallback() {
-      currentUrl.textContent = window.location.href;
-
-      const code = getParam("code");
-      const state = getParam("state");
-      const error = getParam("error") || getParam("error_description");
-      const scope = getParam("scope") || "";
-      const expectedState = sessionStorage.getItem(stateKey);
-
-      codeValue.textContent = code || "-";
-      stateValue.textContent = state || "-";
-      expectedStateValue.textContent = expectedState || "-";
-      errorValue.textContent = error || "-";
-
-      if (error) {
-        storedStatusValue.textContent = "Authorization failed";
-        setBanner("danger", "TikTok authorization returned an error. Review the callback parameters below.");
-        return;
-      }
-
-      if (!code) {
-        storedStatusValue.textContent = "No code received";
-        setBanner("warn", "No authorization code was found in the callback URL.");
-        return;
-      }
-
-      if (!expectedState) {
-        sessionStorage.setItem(authCodeKey, code);
-        sessionStorage.setItem(authScopesKey, scope || "unknown");
-        storedStatusValue.textContent = "Saved without expected state";
-        setBanner("warn", "Authorization code was received, but no expected state was found in sessionStorage.");
-        return;
-      }
-
-      if (state !== expectedState) {
-        storedStatusValue.textContent = "State mismatch";
-        setBanner("danger", "State validation failed. The returned state does not match the stored state.");
-        return;
-      }
-
-      sessionStorage.setItem(authCodeKey, code);
-      sessionStorage.setItem(authScopesKey, scope || "unknown");
-      storedStatusValue.textContent = "Authorization code saved successfully";
-      setBanner("ok", "TikTok authorization completed successfully. Return to the homepage to continue.");
-    }
-
-    clearBtn.addEventListener("click", clearLocalAuthData);
-
-    processCallback();
   </script>
 </body>
 </html>
